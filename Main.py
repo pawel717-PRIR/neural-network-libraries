@@ -5,8 +5,8 @@ import FitModel
 
 def main():
     # MnistModel()
-    Cifar10Model()
-    #Cifar100Model()
+    # Cifar10Model()
+    Cifar100Model()
     # LoadData.LoadLetterRecognitionData()
 
 
