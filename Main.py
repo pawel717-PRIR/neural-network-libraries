@@ -4,12 +4,11 @@ import FitModel
 
 
 def main():
-    # MnistModel()
-    # Cifar10Model()
-    Cifar100Model()
-    # LoadData.LoadLetterRecognitionData()
-
-
+    #MnistModel()
+    #Cifar10Model()
+    #Cifar100Model()
+    LetterRecognitionModel()
+    #LoadData.LoadLetterRecognitionData()
 
 def MnistModel():
     x_train, x_test, y_train, y_test, input_shape, num_classes = LoadData.LoadMnistData()
@@ -27,6 +26,11 @@ def Cifar100Model():
     model = CreateNeuralModel.CreateCifar100Model(num_classes, x_train)
     FitModel.FitCifar100Model(model, x_train, y_train, x_test, y_test)
 
+def LetterRecognitionModel():
+    num_classes = 26
+    x_train, x_test, y_train, y_test = LoadData.LoadLetterRecognitionData()
+    model = CreateNeuralModel.CreateLetterRecignitionModel(num_classes)
+    FitModel.FitLetterRecognitionModel(model, x_train.values, y_train, x_test.values, y_test)
 
 
 if __name__ == '__main__':

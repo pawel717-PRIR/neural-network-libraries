@@ -1,8 +1,13 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
-import tensorflow.keras as keras
-import tensorflow.keras.backend as K
+import tensorflow as tf
+from keras.datasets import mnist
+from keras import backend as K
+import keras
+from keras.datasets import cifar10
+from keras.datasets import cifar100
 import pandas
-from tensorflow.python.keras.datasets import cifar10, cifar100, mnist
+from sklearn.model_selection import train_test_split
+
 
 
 def LoadMnistData():
@@ -12,6 +17,8 @@ def LoadMnistData():
     img_rows, img_cols = 28, 28
 
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
+    print(y_train.size)
+    print(y_test.size)
 
     if K.image_data_format() == 'channels_first':
         x_train = x_train.reshape(x_train.shape[0], 1, img_rows, img_cols)
@@ -59,8 +66,17 @@ def LoadCifar100Data():
 
 
 def LoadLetterRecognitionData():
-    df = pandas.read_csv("letter-recognition.csv", header=True)
+    num_classes = 26
+    df = pandas.read_csv("letter-recognition.csv", header=None)
+    dfLables = df[0]
+    df = df.drop(df.columns[0], axis=1)
+    x_train, x_test, y_train, y_test = train_test_split(df, dfLables, test_size=0.3, random_state=42)
 
+    y_train = pandas.factorize(y_train)
+    y_test = pandas.factorize(y_test)
+    y_train = keras.utils.to_categorical(y_train[0], num_classes)
+    y_test = keras.utils.to_categorical(y_test[0], num_classes)
+    return x_train, x_test, y_train, y_test
 
 
 
