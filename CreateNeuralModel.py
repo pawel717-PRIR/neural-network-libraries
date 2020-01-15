@@ -3,10 +3,12 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D
 from keras.layers.convolutional import MaxPooling2D
+from keras.losses import categorical_crossentropy
+import keras
 
 
 def CreateMnistModel(input_shape, num_classes):
-    model = Sequential()
+    model: Sequential = Sequential()
     model.add(Conv2D(32, kernel_size=(3, 3),
                      activation='relu',
                      input_shape=input_shape))
@@ -17,7 +19,9 @@ def CreateMnistModel(input_shape, num_classes):
     model.add(Dense(128, activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(num_classes, activation='softmax'))
-
+    model.compile(loss='categorical_crossentropy',
+                  optimizer='SGD',
+                  metrics=['accuracy'])
 
     return model
 
@@ -44,6 +48,13 @@ def CreateCifar10Model(num_classes, x_train):
     model.add(Dropout(0.5))
     model.add(Dense(num_classes))
     model.add(Activation('softmax'))
+
+    opt = keras.optimizers.RMSprop(learning_rate=0.0001, decay=1e-6)
+
+    # Let's train the model using RMSprop
+    model.compile(loss='categorical_crossentropy',
+                  optimizer=opt,
+                  metrics=['accuracy'])
 
     return model
 
@@ -84,14 +95,20 @@ def CreateCifar100Model(num_classes, x_train):
     model.add(Dense(num_classes))
     model.add(Activation('softmax'))
 
+    model.compile(loss='categorical_crossentropy', optimizer='SGD', metrics=['accuracy'])
+
     return model
 
 def CreateLetterRecignitionModel(num_classes):
     model = Sequential()
-    model.add(Dense(22))
+    model.add(Dense(50))
     model.add(Activation('relu'))
     model.add(Dense(22))
     model.add(Activation('relu'))
     model.add(Dense(num_classes, activation='softmax'))
+
+    model.compile(loss=keras.losses.categorical_crossentropy,
+                  optimizer='SGD',
+                  metrics=['accuracy'])
 
     return model
