@@ -82,9 +82,7 @@ def LoadLetterRecognitionData():
     x_data = df.drop(df.columns[0], axis=1)
 
     y_data = pandas.factorize(y_data)
-
-
-    return x_data, y_data[0], num_classes
+    return x_data.values, y_data[0], num_classes
 
 def SplitData(x_data, y_data, num_classes):
     x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.3, random_state=42)
@@ -100,6 +98,6 @@ def SplitDataForLetterRecognition(x_data, y_data, num_classes):
     y_train = keras.utils.to_categorical(y_train[0], num_classes)
     y_test = keras.utils.to_categorical(y_test[0], num_classes)
 
-    return x_train, x_test, y_train, y_test
+    return x_train.values, x_test.values, y_train, y_test
 
 

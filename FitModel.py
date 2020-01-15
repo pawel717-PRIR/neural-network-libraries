@@ -45,7 +45,7 @@ def FitMnistModel(crossValidationFlag):
     print(end - start)
 
 def FitCifar10Model(crossValidationFlag):
-    x_data, y_data, input_shape, num_classes = LoadData.LoadCifar10Data()
+    x_data, y_data, num_classes = LoadData.LoadCifar10Data()
     model = CreateNeuralModel.CreateCifar10Model(num_classes, x_data)
     batch_size = 32
     epochs = 100
@@ -84,7 +84,7 @@ def FitCifar10Model(crossValidationFlag):
 
 
 def FitCifar100Model(crossValidationFlag):
-    x_data, y_data, input_shape, num_classes = LoadData.LoadCifar100Data()
+    x_data, y_data, num_classes = LoadData.LoadCifar100Data()
     model = CreateNeuralModel.CreateCifar10Model(num_classes, x_data)
     batch_size = 128
     epochs = 12
@@ -113,7 +113,7 @@ def FitCifar100Model(crossValidationFlag):
 
 
 def FitLetterRecognitionModel(crossValidationFlag):
-    x_data, y_data, input_shape, num_classes = LoadData.LoadLetterRecognitionData()
+    x_data, y_data, num_classes = LoadData.LoadLetterRecognitionData()
     model = CreateNeuralModel.CreateLetterRecignitionModel(num_classes)
     batch_size = 128
     epochs = 1000
@@ -121,9 +121,12 @@ def FitLetterRecognitionModel(crossValidationFlag):
     if crossValidationFlag:
         n_split = 10
         start = timer()
-        for train_index, test_index in KFold(n_split).split(x_data):
+        for train_index, test_index in KFold(n_split).split(y_data):
             x_train, x_test = x_data[train_index], x_data[test_index]
             y_train, y_test = y_data[train_index], y_data[test_index]
+
+            y_train = keras.utils.to_categorical(y_train, num_classes)
+            y_test = keras.utils.to_categorical(y_test, num_classes)
 
             model.fit(x_train, y_train,
                       batch_size=batch_size,

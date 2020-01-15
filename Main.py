@@ -5,7 +5,7 @@ import FitModel as fit
 crossValidationFlag = True
 
 def main():
-    fit.FitMnistModel(crossValidationFlag)
+    fit.FitLetterRecognitionModel(crossValidationFlag)
 
 
 if __name__ == '__main__':
