@@ -98,16 +98,14 @@ class Cifar100Model(tf.keras.Model):
 class LetterRecignitionModel(tf.keras.Model):
     def __init__(self, num_classes, input_shape):
         super(LetterRecignitionModel, self).__init__()
-        self.dense1 = tf.keras.layers.Dense(26, activation='elu',
-                                            input_dim=input_shape,
-                                            kernel_initializer=he_normal(seed=None))
+        self.dense1 = tf.keras.layers.Dense(50, activation='elu',
+                                            input_dim=input_shape)
         # self.norm1 = tf.keras.layers.BatchNormalization()
-        self.dropout1 = tf.keras.layers.Dropout(0.5)
-        self.dense2 = tf.keras.layers.Dense(64, activation='elu',
-                                            kernel_initializer=he_normal(seed=None))
+        self.dropout1 = tf.keras.layers.Dropout(0.50)
+        self.dense2 = tf.keras.layers.Dense(22, activation='elu')
         # self.norm2 = tf.keras.layers.BatchNormalization()
-        self.dropout2 = tf.keras.layers.Dropout(0.5)
-        self.dense3 = tf.keras.layers.Dense(num_classes, activation='sigmoid')
+        self.dropout2 = tf.keras.layers.Dropout(0.50)
+        self.dense3 = tf.keras.layers.Dense(num_classes, activation='softmax')
 
 
     def call(self, inputs):
@@ -122,16 +120,32 @@ class LetterRecignitionModel(tf.keras.Model):
 
 
 def CreateMnistModel(input_shape, num_classes):
-    return MnistModel(input_shape=input_shape, num_classes=num_classes)
+    model = MnistModel(input_shape=input_shape, num_classes=num_classes)
+    model.compile(loss='categorical_crossentropy',
+                  optimizer=tf.keras.optimizers.Adadelta(),
+                  metrics=['accuracy'])
+    return model
 
 
 def CreateCifar10Model(num_classes, x_train):
-    return Cifar10Model(input_shape=x_train.shape[1:], num_classes=num_classes)
+    model = Cifar10Model(input_shape=x_train.shape[1:], num_classes=num_classes)
+    model.compile(loss='categorical_crossentropy',
+                  optimizer=tf.keras.optimizers.RMSprop(learning_rate=0.0001, decay=1e-6),
+                  metrics=['accuracy'])
+    return model
 
 
 def CreateCifar100Model(num_classes, x_train):
-    return Cifar100Model(input_shape=x_train.shape[1:], num_classes=num_classes)
+    model = Cifar100Model(input_shape=x_train.shape[1:], num_classes=num_classes)
+    model.compile(loss='categorical_crossentropy',
+                  optimizer=tf.keras.optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True),
+                  metrics=['accuracy'])
+    return model
 
 
 def CreateLetterRecignitionModel(num_classes, input_shape):
-    return LetterRecignitionModel(num_classes=num_classes, input_shape=input_shape)
+    model = LetterRecignitionModel(num_classes=num_classes, input_shape=input_shape)
+    model.compile(loss=tf.keras.losses.categorical_crossentropy,
+                  optimizer=tf.keras.optimizers.SGD(lr=0.001, decay=1e-7, momentum=0.),
+                  metrics=['accuracy'])
+    return model

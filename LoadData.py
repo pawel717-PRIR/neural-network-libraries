@@ -2,10 +2,9 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import tensorflow.keras as keras
 import tensorflow.keras.backend as K
 import pandas
-from sklearn.preprocessing import scale
 from tensorflow.python.keras.datasets import cifar10, cifar100, mnist
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
+import numpy as np
 
 def LoadMnistData():
     num_classes = 10
@@ -29,48 +28,70 @@ def LoadMnistData():
     x_train /= 255
     x_test /= 255
 
-    # convert class vectors to binary class matrices
-    y_train = keras.utils.to_categorical(y_train, num_classes)
-    y_test = keras.utils.to_categorical(y_test, num_classes)
+    x_data = np.concatenate((x_train, x_test))
+    y_data = np.concatenate((y_train, y_test))
+    y_data = keras.utils.to_categorical(y_data, num_classes)
 
-    return x_train, x_test, y_train, y_test, input_shape, num_classes
+    return x_data, y_data, input_shape, num_classes
 
 def LoadCifar10Data():
     num_classes = 10
 
     # The data, split between train and test sets:
     (x_train, y_train), (x_test, y_test) = cifar10.load_data()
-    y_train = keras.utils.to_categorical(y_train, num_classes)
-    y_test = keras.utils.to_categorical(y_test, num_classes)
 
-    return x_train, x_test, y_train, y_test, num_classes
+    x_train = x_train.astype('float32')
+    x_test = x_test.astype('float32')
+    x_train /= 255
+    x_test /= 255
+
+    x_data = np.concatenate((x_train, x_test))
+    y_data = np.concatenate((y_train, y_test))
+    y_data = keras.utils.to_categorical(y_data, num_classes)
+
+    return x_data, y_data, num_classes
 
 def LoadCifar100Data():
     num_classes = 100
 
     # The data, split between train and test sets:
     (x_train, y_train), (x_test, y_test) = cifar100.load_data()
-    y_train = keras.utils.to_categorical(y_train, num_classes)
-    y_test = keras.utils.to_categorical(y_test, num_classes)
+
     x_train = x_train.astype('float32')
     x_test = x_test.astype('float32')
     x_train /= 255.0
     x_test /= 255.0
 
-    return x_train, x_test, y_train, y_test, num_classes
+    x_data = np.concatenate((x_train, x_test))
+    y_data = np.concatenate((y_train, y_test))
+    y_data = keras.utils.to_categorical(y_data, num_classes)
+
+    return x_data, y_data, num_classes
 
 
 def LoadLetterRecognitionData():
     num_classes = 26
     df = pandas.read_csv("letter-recognition.csv", header=None)
-    dfLables = df[0]
-    df = df.drop(df.columns[0], axis=1)
-    df[df.columns] = MinMaxScaler().fit_transform(df[df.columns])
-    x_train, x_test, y_train, y_test = train_test_split(df, dfLables, test_size=0.3, random_state=42)
+    y_data = df[0]
+    x_data = df.drop(df.columns[0], axis=1)
+
+    y_data = pandas.factorize(y_data)
+    return x_data.values, y_data[0], num_classes
+
+def SplitData(x_data, y_data, num_classes):
+    x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.3, random_state=42)
+
+    return x_train, x_test, y_train, y_test
+
+def SplitDataForLetterRecognition(x_data, y_data, num_classes):
+    x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.3, random_state=42)
 
     y_train = pandas.factorize(y_train)
     y_test = pandas.factorize(y_test)
+
     y_train = keras.utils.to_categorical(y_train[0], num_classes)
     y_test = keras.utils.to_categorical(y_test[0], num_classes)
+
     return x_train, x_test, y_train, y_test
+
 
