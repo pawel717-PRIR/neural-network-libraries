@@ -1,5 +1,6 @@
 from __future__ import print_function
 import tensorflow as tf
+from tensorflow.python import he_normal
 
 
 class MnistModel(tf.keras.Model):
@@ -93,6 +94,33 @@ class Cifar100Model(tf.keras.Model):
         x = self.dense2(x)
         return x
 
+
+class LetterRecignitionModel(tf.keras.Model):
+    def __init__(self, num_classes, input_shape):
+        super(LetterRecignitionModel, self).__init__()
+        self.dense1 = tf.keras.layers.Dense(26, activation='elu',
+                                            input_dim=input_shape,
+                                            kernel_initializer=he_normal(seed=None))
+        # self.norm1 = tf.keras.layers.BatchNormalization()
+        self.dropout1 = tf.keras.layers.Dropout(0.5)
+        self.dense2 = tf.keras.layers.Dense(64, activation='elu',
+                                            kernel_initializer=he_normal(seed=None))
+        # self.norm2 = tf.keras.layers.BatchNormalization()
+        self.dropout2 = tf.keras.layers.Dropout(0.5)
+        self.dense3 = tf.keras.layers.Dense(num_classes, activation='sigmoid')
+
+
+    def call(self, inputs):
+        x = self.dense1(inputs)
+        # x = self.norm1(x)
+        x = self.dropout1(x)
+        x = self.dense2(x)
+        # x = self.norm2(x)
+        x = self.dropout2(x)
+        x = self.dense3(x)
+        return x
+
+
 def CreateMnistModel(input_shape, num_classes):
     return MnistModel(input_shape=input_shape, num_classes=num_classes)
 
@@ -103,3 +131,7 @@ def CreateCifar10Model(num_classes, x_train):
 
 def CreateCifar100Model(num_classes, x_train):
     return Cifar100Model(input_shape=x_train.shape[1:], num_classes=num_classes)
+
+
+def CreateLetterRecignitionModel(num_classes, input_shape):
+    return LetterRecignitionModel(num_classes=num_classes, input_shape=input_shape)

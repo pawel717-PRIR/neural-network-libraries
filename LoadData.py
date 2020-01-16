@@ -2,8 +2,10 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import tensorflow.keras as keras
 import tensorflow.keras.backend as K
 import pandas
+from sklearn.preprocessing import scale
 from tensorflow.python.keras.datasets import cifar10, cifar100, mnist
-
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
 
 def LoadMnistData():
     num_classes = 10
@@ -59,8 +61,16 @@ def LoadCifar100Data():
 
 
 def LoadLetterRecognitionData():
-    df = pandas.read_csv("letter-recognition.csv", header=True)
+    num_classes = 26
+    df = pandas.read_csv("letter-recognition.csv", header=None)
+    dfLables = df[0]
+    df = df.drop(df.columns[0], axis=1)
+    df[df.columns] = MinMaxScaler().fit_transform(df[df.columns])
+    x_train, x_test, y_train, y_test = train_test_split(df, dfLables, test_size=0.3, random_state=42)
 
-
-
+    y_train = pandas.factorize(y_train)
+    y_test = pandas.factorize(y_test)
+    y_train = keras.utils.to_categorical(y_train[0], num_classes)
+    y_test = keras.utils.to_categorical(y_test[0], num_classes)
+    return x_train, x_test, y_train, y_test
 

@@ -20,6 +20,7 @@ def FitMnistModel(model, x_train, y_train, x_test, y_test):
     print('Test loss:', score[0])
     print('Test accuracy:', score[1])
 
+
 def FitCifar10Model(model, x_train, y_train, x_test, y_test):
     # initiate RMSprop optimizer
     batch_size = 128
@@ -57,4 +58,20 @@ def FitCifar100Model(model, x_train, y_train, x_test, y_test):
     model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, verbose=2, validation_data=(x_test, y_test))
     score = model.evaluate(x_test, y_test, verbose=1)
     print('Test score:', score[0])
+    print('Test accuracy:', score[1])
+
+
+def FitLetterRecognitionModel(model, x_train, y_train, x_test, y_test):
+    batch_size = 128
+    epochs = 100
+    model.compile(loss=keras.losses.categorical_crossentropy,
+                  optimizer=keras.optimizers.SGD(lr=0.001, decay=1e-7, momentum=0.),
+                  metrics=['accuracy'])
+    model.fit(x_train, y_train,
+              batch_size=batch_size,
+              epochs=epochs,
+              verbose=2,
+              validation_data=(x_test, y_test))
+    score = model.evaluate(x_test, y_test, verbose=1)
+    print('Test loss:', score[0])
     print('Test accuracy:', score[1])
