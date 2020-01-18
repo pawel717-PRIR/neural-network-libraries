@@ -9,7 +9,7 @@ import tensorflow as keras
 def FitMnistModel(crossValidationFlag):
     x_data, y_data, input_shape, num_classes = LoadData.LoadMnistData()
     model = CreateNeuralModel.CreateMnistModel(input_shape, num_classes)
-    batch_size = 128
+    batch_size = 256
     epochs = 12
 
     model.compile(loss=keras.losses.categorical_crossentropy,
@@ -50,7 +50,7 @@ def FitMnistModel(crossValidationFlag):
 def FitCifar10Model(crossValidationFlag):
     x_data, y_data, num_classes = LoadData.LoadCifar10Data()
     model = CreateNeuralModel.CreateCifar10Model(num_classes, x_data)
-    batch_size = 128
+    batch_size = 256
     epochs = 12
 
     if crossValidationFlag:
@@ -89,7 +89,7 @@ def FitCifar10Model(crossValidationFlag):
 def FitCifar100Model(crossValidationFlag):
     x_data, y_data, num_classes = LoadData.LoadCifar100Data()
     model = CreateNeuralModel.CreateCifar100Model(num_classes, x_data)
-    batch_size = 128
+    batch_size = 256
     epochs = 12
 
     if crossValidationFlag:
@@ -118,8 +118,8 @@ def FitCifar100Model(crossValidationFlag):
 def FitLetterRecognitionModel(crossValidationFlag):
     x_data, y_data, num_classes = LoadData.LoadLetterRecognitionData()
     model = CreateNeuralModel.CreateLetterRecignitionModel(num_classes, x_data.shape[1])
-    batch_size = 128
-    epochs = 300
+    batch_size = 256
+    epochs = 200
 
     if crossValidationFlag:
         n_split = 10
