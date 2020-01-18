@@ -11,7 +11,7 @@ from prir.pytorch.model.MnistModel import MnistModel
 
 def get_device(use_gpu=False):
     dev = "cpu"
-    if (use_gpu):
+    if use_gpu:
         if torch.cuda.is_available():
             dev = "cuda:0"
         else:
@@ -20,19 +20,19 @@ def get_device(use_gpu=False):
 
 
 def run_all_tests(model):
+    model.set_device(get_device(use_gpu=True))
     model.run_train_cross_validation()
     model.reset().run_train()
     model.set_device(get_device(use_gpu=False))
-    model.n_epochs = math.floor(model.n_epochs/6)
     model.reset().run_train_cross_validation()
     model.reset().run_train()
 
 
 def main():
-    run_all_tests(LetterRecognitionModel(device=get_device(use_gpu=True)))
-    run_all_tests(Cifar10Model(device=get_device(use_gpu=True)))
-    run_all_tests(Cifar100Model(device=get_device(use_gpu=True)))
-    run_all_tests(MnistModel(device=get_device(use_gpu=True)))
+    run_all_tests(MnistModel())
+    run_all_tests(Cifar10Model())
+    run_all_tests(Cifar100Model())
+    run_all_tests(LetterRecognitionModel())
 
 
 if __name__ == "__main__":

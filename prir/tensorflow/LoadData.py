@@ -1,9 +1,12 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
-import tensorflow as keras, tensorflow as K
+import keras
 import pandas
+from keras.backend import image_data_format
 
 from prir.path.utils import get_datasets_path
-from tensorflow.python.keras.datasets import cifar10, cifar100, mnist
+from keras.datasets import cifar10, cifar100, mnist
+
+
 from sklearn.model_selection import train_test_split
 import numpy as np
 
@@ -15,7 +18,7 @@ def LoadMnistData():
 
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-    if K.image_data_format() == 'channels_first':
+    if image_data_format() == 'channels_first':
         x_train = x_train.reshape(x_train.shape[0], 1, img_rows, img_cols)
         x_test = x_test.reshape(x_test.shape[0], 1, img_rows, img_cols)
         input_shape = (1, img_rows, img_cols)
