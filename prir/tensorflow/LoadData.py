@@ -1,7 +1,8 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
-import tensorflow.keras as keras
-import tensorflow.keras.backend as K
+import tensorflow as keras, tensorflow as K
 import pandas
+
+from prir.path.utils import get_datasets_path
 from tensorflow.python.keras.datasets import cifar10, cifar100, mnist
 from sklearn.model_selection import train_test_split
 import numpy as np
@@ -71,7 +72,7 @@ def LoadCifar100Data():
 
 def LoadLetterRecognitionData():
     num_classes = 26
-    df = pandas.read_csv("letter-recognition.csv", header=None)
+    df = pandas.read_csv(get_datasets_path().joinpath("letter-recognition/letter-recognition.csv"), header=None)
     y_data = df[0]
     x_data = df.drop(df.columns[0], axis=1)
 

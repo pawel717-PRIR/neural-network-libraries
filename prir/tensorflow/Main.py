@@ -1,4 +1,4 @@
-import FitModel as fit
+from prir.tensorflow import FitModel as fit
 
 crossValidationFlag = True
 

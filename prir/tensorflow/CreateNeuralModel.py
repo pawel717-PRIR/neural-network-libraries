@@ -1,6 +1,5 @@
 from __future__ import print_function
 import tensorflow as tf
-from tensorflow.python import he_normal
 
 
 class MnistModel(tf.keras.Model):
@@ -146,6 +145,6 @@ def CreateCifar100Model(num_classes, x_train):
 def CreateLetterRecignitionModel(num_classes, input_shape):
     model = LetterRecignitionModel(num_classes=num_classes, input_shape=input_shape)
     model.compile(loss=tf.keras.losses.categorical_crossentropy,
-                  optimizer=tf.keras.optimizers.SGD(lr=0.001, decay=1e-7, momentum=0.),
+                  optimizer=tf.keras.optimizers.SGD(lr=0.001, decay=1e-7, momentum=0.3),
                   metrics=['accuracy'])
     return model
