@@ -22,7 +22,7 @@ class Cifar100Model(NetworkModel):
     def __init_network__(self):
         self.network = Net(self.batch_size_train)
         self.network.apply(weight_init)
-        self.network.to(self.device)
+        self.network.to(self._device)
         self.optimizer = optim.SGD(self.network.parameters(), lr=self.learning_rate, momentum=0.9,
                               nesterov=True, weight_decay=1e-6)
 

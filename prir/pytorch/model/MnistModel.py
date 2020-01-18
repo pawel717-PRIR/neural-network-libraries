@@ -22,7 +22,7 @@ class MnistModel(NetworkModel):
     def __init_network__(self):
         self.network = Net(self.batch_size_train)
         self.network.apply(weight_init)
-        self.network.to(self.device)
+        self.network.to(self._device)
         self.optimizer = optim.Adadelta(self.network.parameters(), lr=self.learning_rate, rho=0.95)
 
 

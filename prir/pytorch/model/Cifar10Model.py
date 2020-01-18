@@ -22,7 +22,7 @@ class Cifar10Model(NetworkModel):
     def __init_network__(self):
         self.network = Net(self.batch_size_train)
         self.network.apply(weight_init)
-        self.network.to(self.device)
+        self.network.to(self._device)
         self.optimizer = optim.RMSprop(self.network.parameters(), lr=self.learning_rate, eps=1e-7)
 
 
