@@ -1,10 +1,10 @@
 from __future__ import print_function
 from sklearn.model_selection import KFold
-import CreateNeuralModel
-import LoadData
+from prir.tensorflow import LoadData, CreateNeuralModel
 from timeit import default_timer as timer
 
-import tensorflow.keras as keras
+import tensorflow as keras
+
 
 def FitMnistModel(crossValidationFlag):
     x_data, y_data, input_shape, num_classes = LoadData.LoadMnistData()
@@ -23,14 +23,14 @@ def FitMnistModel(crossValidationFlag):
             x_train, x_test = x_data[train_index], x_data[test_index]
             y_train, y_test = y_data[train_index], y_data[test_index]
 
-        model.fit(x_train, y_train,
-                  batch_size=batch_size,
-                  epochs=epochs,
-                  verbose=2,
-                  validation_data=(x_test, y_test))
-        score = model.evaluate(x_test, y_test, verbose=1)
-        print('Test loss:', score[0])
-        print('Test accuracy:', score[1])
+            model.fit(x_train, y_train,
+                      batch_size=batch_size,
+                      epochs=epochs,
+                      verbose=2,
+                      validation_data=(x_test, y_test))
+            score = model.evaluate(x_test, y_test, verbose=1)
+            print('Test loss:', score[0])
+            print('Test accuracy:', score[1])
 
     else:
         start = timer()
