@@ -14,7 +14,7 @@ class LetterRecognitionModel(NetworkModel):
                  train_to_test_split_ratio=0.3,
                  batch_size=256,
                  n_epochs=200):
-        super().__init__( device=device, train_to_test_split_ratio=train_to_test_split_ratio,
+        super().__init__(device=device, train_to_test_split_ratio=train_to_test_split_ratio,
                        batch_size=batch_size, n_epochs=n_epochs)
 
     def __init_class_fields__(self):
@@ -26,7 +26,7 @@ class LetterRecognitionModel(NetworkModel):
     def __init_network__(self):
         self.network = Net(self.batch_size_train)
         self.network.apply(weight_init)
-        self.network.to(self.device)
+        self.network.to(self._device)
         self.optimizer = optim.SGD(self.network.parameters(), lr=self.learning_rate, momentum=0.3,
                                    weight_decay=1e-7)
 

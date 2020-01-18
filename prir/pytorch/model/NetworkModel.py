@@ -23,7 +23,7 @@ class NetworkModel(ABC):
         self.__init_class_fields__()
         self.batch_size_test = batch_size
         self.log_interval = batch_size
-        self.device = device
+        self._device = device
         self.__init_network__()
 
     @abstractmethod
@@ -42,8 +42,8 @@ class NetworkModel(ABC):
         return self
 
     def set_device(self, device):
-        self.device = device
-        self.network.to(self.device)
+        self._device = device
+        self.network.to(self._device)
 
     def run_train(self):
         train_set, test_set = split_dataset(self.dataset, test_size=self.train_to_test_split_ratio)
@@ -57,23 +57,23 @@ class NetworkModel(ABC):
         ==============================================================
         {} device: {} TRAIN START
         --------------------------------------------------------------
-        '''.format(self.__class__.__name__, self.device))
+        '''.format(self.__class__.__name__, self._device))
         start = timer()
         self.train_loop(train_loader=train_loader, test_loader=test_loader)
         end = timer()
-        print('''
+        logging.info('''
         --------------------------------------------------------------
-        {} device: {} CROSS VALIDATION TRAIN END
+        {} device: {} TRAIN END
         Elapsed time: {}
         ==============================================================
-        '''.format(self.__class__.__name__, self.device, end - start))
+        '''.format(self.__class__.__name__, self._device, end - start))
 
     def run_train_cross_validation(self, k_folds_number=10):
         logging.info('''
         ==============================================================
         {} device: {} CROSS VALIDATION TRAIN START
         --------------------------------------------------------------
-        '''.format(self.__class__.__name__, self.device))
+        '''.format(self.__class__.__name__, self._device))
         start = timer()
         for train_mask, test_mask in KFold(k_folds_number).split(self.dataset):
             train_loader = torch.utils.data.DataLoader(self.dataset,
@@ -92,13 +92,13 @@ class NetworkModel(ABC):
         {} device: {} CROSS VALIDATION TRAIN END
         Elapsed time: {}
         ==============================================================
-        '''.format(self.__class__.__name__, self.device, end - start))
+        '''.format(self.__class__.__name__, self._device, end - start))
 
     def train(self, epoch, data_loader):
         logging.info("Epoch: {}\n".format(epoch))
         self.network.train()
         for batch_idx, (data, target) in enumerate(data_loader):
-            data, target = data.to(self.device), target.to(self.device)
+            data, target = data.to(self._device), target.to(self._device)
             self.optimizer.zero_grad()
             output = self.network(data)
             loss = F.cross_entropy(output, target)
@@ -111,7 +111,7 @@ class NetworkModel(ABC):
         correct = 0
         with torch.no_grad():
             for data, target in data_loader:
-                data, target = data.to(self.device), target.to(self.device)
+                data, target = data.to(self._device), target.to(self._device)
                 output = self.network(data)
                 test_loss += F.cross_entropy(output, target, size_average=False).item()
                 pred = output.data.max(1, keepdim=True)[1]
