@@ -1,0 +1,4 @@
+# exclude dataset files - too large for github
+
+cifar-100-python
+cifar-100-python.tar.gz
