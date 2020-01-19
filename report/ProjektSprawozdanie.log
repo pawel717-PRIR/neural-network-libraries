@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.12)  19 JAN 2020 17:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.12)  19 JAN 2020 17:36
 entering extended mode
 **./ProjektSprawozdanie.tex
 (ProjektSprawozdanie.tex
@@ -559,19 +559,19 @@ Package: listings 2019/09/10 1.8c (Carsten Heinz)
  (ProjektSprawozdanie.aux)
 \openout1 = `ProjektSprawozdanie.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 25
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 26
 .
 (D:\PROGRAMY\miktex\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -637,7 +637,7 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 25.
+ on input line 26.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -675,34 +675,34 @@ your preamble.
 
 \c@lstlisting=\count135
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
-7.
+8.
 (D:\PROGRAMY\miktex\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-7.
+8.
 
 (D:\PROGRAMY\miktex\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-27.
+28.
 
 (D:\PROGRAMY\miktex\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-27.
+28.
 
 (D:\PROGRAMY\miktex\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 27.
+(Font)              <12> on input line 28.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 27.
+(Font)              <8> on input line 28.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 27.
+(Font)              <6> on input line 28.
  [1
 
 
@@ -716,76 +716,76 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
  [1]
 LaTeX Font Info:    Trying to load font information for OMS+lmr on input line 4
-0.
+1.
 
 (D:\PROGRAMY\miktex\tex/latex/lm\omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 40.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 41.
 <./images/MNIST.png, id=17, 282.05376pt x 179.67125pt>
 File: ./images/MNIST.png Graphic file (type png)
 <use ./images/MNIST.png>
-Package pdftex.def Info: ./images/MNIST.png  used on input line 48.
+Package pdftex.def Info: ./images/MNIST.png  used on input line 49.
 (pdftex.def)             Requested size: 282.05305pt x 179.67079pt.
 <./images/cifar10.png, id=18, 494.84875pt x 375.4025pt>
 File: ./images/cifar10.png Graphic file (type png)
 <use ./images/cifar10.png>
-Package pdftex.def Info: ./images/cifar10.png  used on input line 52.
+Package pdftex.def Info: ./images/cifar10.png  used on input line 53.
 (pdftex.def)             Requested size: 494.84755pt x 375.40158pt.
 
-Overfull \hbox (39.60344pt too wide) in paragraph at lines 51--53
+Overfull \hbox (39.60344pt too wide) in paragraph at lines 52--54
 [] 
  []
 
 [2 <./images/MNIST.png (PNG copy)>] [3 <./images/cifar10.png>] [4] [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 136--137
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
  []
 
 <./images/modelMnist.png, id=38, 477.785pt x 376.40625pt>
 File: ./images/modelMnist.png Graphic file (type png)
 <use ./images/modelMnist.png>
-Package pdftex.def Info: ./images/modelMnist.png  used on input line 143.
+Package pdftex.def Info: ./images/modelMnist.png  used on input line 144.
 (pdftex.def)             Requested size: 427.86905pt x 337.07964pt.
 <./images/mnist-graph.png, id=39, 941.01563pt x 941.01563pt>
 File: ./images/mnist-graph.png Graphic file (type png)
 <use ./images/mnist-graph.png>
-Package pdftex.def Info: ./images/mnist-graph.png  used on input line 147.
+Package pdftex.def Info: ./images/mnist-graph.png  used on input line 148.
 (pdftex.def)             Requested size: 427.86905pt x 427.86125pt.
 [7 <./images/modelMnist.png>] [8 <./images/mnist-graph.png>]
 <./images/modelCifar10.png, id=48, 530.98375pt x 552.0625pt>
 File: ./images/modelCifar10.png Graphic file (type png)
 <use ./images/modelCifar10.png>
-Package pdftex.def Info: ./images/modelCifar10.png  used on input line 154.
+Package pdftex.def Info: ./images/modelCifar10.png  used on input line 155.
 (pdftex.def)             Requested size: 427.86905pt x 444.86005pt.
 <./images/cifar10-graph.png, id=49, 999.735pt x 1340.00626pt>
 File: ./images/cifar10-graph.png Graphic file (type png)
 <use ./images/cifar10-graph.png>
-Package pdftex.def Info: ./images/cifar10-graph.png  used on input line 158.
+Package pdftex.def Info: ./images/cifar10-graph.png  used on input line 159.
 (pdftex.def)             Requested size: 427.86905pt x 573.49248pt.
  [9 <./images/modelCifar10.png>] [10 <./images/cifar10-graph.png>]
 <./images/modelCifar100.png, id=58, 487.8225pt x 542.025pt>
 File: ./images/modelCifar100.png Graphic file (type png)
 <use ./images/modelCifar100.png>
-Package pdftex.def Info: ./images/modelCifar100.png  used on input line 165.
+Package pdftex.def Info: ./images/modelCifar100.png  used on input line 166.
 (pdftex.def)             Requested size: 427.86905pt x 475.41205pt.
 <./images/cifar100-graph.png, id=59, 1002.74625pt x 1343.0175pt>
 File: ./images/cifar100-graph.png Graphic file (type png)
 <use ./images/cifar100-graph.png>
-Package pdftex.def Info: ./images/cifar100-graph.png  used on input line 169.
+Package pdftex.def Info: ./images/cifar100-graph.png  used on input line 170.
 (pdftex.def)             Requested size: 427.86905pt x 573.05984pt.
  [11 <./images/modelCifar100.png>] [12 <./images/cifar100-graph.png>]
 <./images/modelLetter.png, id=69, 503.8825pt x 306.14375pt>
 File: ./images/modelLetter.png Graphic file (type png)
 <use ./images/modelLetter.png>
-Package pdftex.def Info: ./images/modelLetter.png  used on input line 176.
+Package pdftex.def Info: ./images/modelLetter.png  used on input line 177.
 (pdftex.def)             Requested size: 427.86905pt x 259.9618pt.
 <./images/letter-recognition-graph.png, id=70, 1478.52374pt x 927.465pt>
 File: ./images/letter-recognition-graph.png Graphic file (type png)
 <use ./images/letter-recognition-graph.png>
 Package pdftex.def Info: ./images/letter-recognition-graph.png  used on input l
-ine 180.
+ine 181.
 (pdftex.def)             Requested size: 427.86905pt x 268.39188pt.
  [13 <./images/modelLetter.png> <./images/letter-recognition-graph.png>] [14] [
 15] [16]
@@ -830,13 +830,13 @@ Missing character: There is no ; in font nullfont!
  [19] [20]
 (ProjektSprawozdanie.aux) ) 
 Here is how much of TeX's memory you used:
- 24941 strings out of 492452
- 622428 string characters out of 3134012
- 808609 words of memory out of 3000000
- 28875 multiletter control sequences out of 15000+200000
+ 24932 strings out of 492452
+ 622267 string characters out of 3134012
+ 808566 words of memory out of 3000000
+ 28866 multiletter control sequences out of 15000+200000
  47593 words of font info for 38 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,17n,98p,1123b,2192s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 68i,17n,98p,1123b,2181s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/PROGRAMY/miktex/fonts/enc/dvips/lm/lm-rm.enc}{D:
 /PROGRAMY/miktex/fonts/enc/dvips/lm/lm-mathit.enc}{D:/PROGRAMY/miktex/fonts/enc
 /dvips/lm/lm-mathsy.enc}{D:/PROGRAMY/miktex/fonts/enc/dvips/lm/lm-ec.enc}<D:/PR
@@ -846,7 +846,7 @@ ROGRAMY/miktex/fonts/type1/public/lm/lmr10.pfb><D:/PROGRAMY/miktex/fonts/type1/
 public/lm/lmr12.pfb><D:/PROGRAMY/miktex/fonts/type1/public/lm/lmr17.pfb><D:/PRO
 GRAMY/miktex/fonts/type1/public/lm/lmr8.pfb><D:/PROGRAMY/miktex/fonts/type1/pub
 lic/lm/lmri12.pfb><D:/PROGRAMY/miktex/fonts/type1/public/lm/lmsy10.pfb>
-Output written on ProjektSprawozdanie.pdf (21 pages, 972187 bytes).
+Output written on ProjektSprawozdanie.pdf (21 pages, 972261 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

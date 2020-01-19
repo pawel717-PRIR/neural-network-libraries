@@ -11,6 +11,7 @@
 \usepackage{listings}
 \newgeometry{tmargin=3cm, bmargin=3cm, lmargin=2.5cm, rmargin=2.5cm}
 \title{
+	\date{18 stycznia 2020}
 	\textbf{Programowanie równoległe i rozproszone}\vspace{40pt}
 	\\\textit{Politechnika Krakowska} \\\vspace{40pt}
 	\textup{Projekt}\vspace{25pt}
@@ -315,7 +316,7 @@ legend style ={ at={(0,-0.2)},
         fill=white,align=left},
 ymajorgrids=true,grid style=dashed
 ]
-\addplot[only marks, mark size=3pt, scatter, color=green, mark=*]
+\addplot[color=green,mark=*, only marks, mark size=3pt]
 coordinates {
 (81.42,318.34)%tensorflow gpu 70/30
 };\addlegendentry{tensorflow gpu 70/30};
@@ -388,13 +389,13 @@ title style={text width=16em, align=center},
 xlabel={Accuracy [\%]},
 ylabel={Czas wykonania [s]},
 xmin=0,xmax=100,
-ymin=0,ymax=25000,
+ymin=0,ymax=28000,
 legend style ={ at={(0,-0.2)}, 
         anchor=north west, draw=black, 
         fill=white,align=left},
 ymajorgrids=true,grid style=dashed
 ]
-\addplot[only marks, mark size=3pt, scatter, color=green, mark=*]
+\addplot[only marks, mark size=3pt, color=green, mark=*]
 coordinates {
 (59.86,407.71)%tensorflow gpu 70/30
 };\addlegendentry{tensorflow gpu 70/30};
@@ -473,7 +474,7 @@ legend style ={ at={(0,-0.2)},
         fill=white,align=left},
 ymajorgrids=true,grid style=dashed
 ]
-\addplot[only marks, mark size=3pt, scatter, color=green, mark=*]
+\addplot[only marks, mark size=3pt, color=green, mark=*]
 coordinates {
 (3.9,407.71)%tensorflow gpu 70/30
 };\addlegendentry{tensorflow gpu 70/30};
