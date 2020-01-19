@@ -14,7 +14,7 @@ class NetworkModel(ABC):
     def __init__(self,
                  device='cuda:0',
                  train_to_test_split_ratio=0.3,
-                 batch_size=256,
+                 batch_size=128,
                  n_epochs=12):
 
         self.train_to_test_split_ratio = train_to_test_split_ratio
@@ -75,6 +75,9 @@ class NetworkModel(ABC):
         --------------------------------------------------------------
         '''.format(self.__class__.__name__, self._device))
         start = timer()
+        i = 0
+        losses = []
+        accuracies = []
         for train_mask, test_mask in KFold(k_folds_number).split(self.dataset):
             train_loader = torch.utils.data.DataLoader(self.dataset,
                                                        sampler=MaskedSampler(mask=train_mask),
@@ -86,6 +89,14 @@ class NetworkModel(ABC):
                                                       batch_size=self.batch_size_test,
                                                       shuffle=False)
             self.train_loop(train_loader, test_loader)
+            logging.info("Model evaluated for {}-fold".format(i))
+            loss, accuracy = self.test(test_loader)
+            losses.append(loss)
+            accuracies.append(accuracy)
+            self.reset()
+            i = i + 1
+        logging.info('Total Test loss: {}'.format(sum(losses) / len(losses)))
+        logging.info('Total Test accuracy: {}'.format(sum(accuracies) / len(accuracies)))
         end = timer()
         logging.info('''
         --------------------------------------------------------------
@@ -120,6 +131,7 @@ class NetworkModel(ABC):
         logging.info('Test set: Avg. loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
             test_loss, correct, len(data_loader.sampler),
             100. * correct / len(data_loader.sampler)))
+        return test_loss, (correct / len(data_loader.sampler))
 
     def train_loop(self, train_loader, test_loader):
         self.test(data_loader=test_loader)

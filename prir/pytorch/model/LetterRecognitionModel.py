@@ -12,8 +12,8 @@ class LetterRecognitionModel(NetworkModel):
     def __init__(self,
                  device='cuda:0',
                  train_to_test_split_ratio=0.3,
-                 batch_size=256,
-                 n_epochs=200):
+                 batch_size=128,
+                 n_epochs=300):
         super().__init__(device=device, train_to_test_split_ratio=train_to_test_split_ratio,
                        batch_size=batch_size, n_epochs=n_epochs)
 
